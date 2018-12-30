@@ -1,7 +1,23 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
+<!--
     {% include 'navigation.twig' %}
+-->
+   {% if repo %}
+   <div class="container"><div class="row"><div class="span12">
+        <h2>Octave Online File History: {{http_user}}</h2>
+        <p>
+            All of your code in Octave Online is backed by a <a href="http://git-scm.com/" target="_blank">Git</a> repository, wh\
+ich you can browse online here.  You can also <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.ht\
+ml" target="_blank">clone the repository</a> and make changes locally.
+        </p>
+        <p>
+            <strong>Clone URL:</strong> <kbd>https://git.octave-online.net/{{ repo }}</kbd><br/>
+            When prompted, use the same email and password as you used to sign in to this page.
+        </p>
+    </div></div></div>
+    {% endif %}
 
     <div class="container">
         <div class="row">
