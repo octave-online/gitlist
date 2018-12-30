@@ -111,6 +111,8 @@ class Routing
 
     public function getRepositoryRegex()
     {
+        return "^\w+\.git$";
+/*
         static $regex = null;
         if ($regex === null) {
             $quotedPaths = array_map(
@@ -129,6 +131,7 @@ class Routing
         }
 
         return $regex;
+*/
     }
 
     public function isWindows()

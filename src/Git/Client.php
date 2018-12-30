@@ -20,10 +20,10 @@ class Client extends BaseClient
 
     public function getRepositoryFromName($paths, $repo)
     {
-        $repositories = $this->getRepositories($paths);
-        $path = $repositories[$repo]['path'];
+        //$repositories = $this->getRepositories($paths);
+        //$path = $repositories[$repo]['path'];
 
-        return $this->getRepository($path);
+        return $this->getRepository($paths[0]."/".$repo);
     }
 
     /**
@@ -37,7 +37,7 @@ class Client extends BaseClient
     public function getRepositories($paths)
     {
         $allRepositories = array();
-
+/*
         foreach ($paths as $path) {
             $repositories = $this->recurseDirectory($path);
 
@@ -45,9 +45,7 @@ class Client extends BaseClient
                 throw new \RuntimeException('There are no GIT repositories in ' . $path);
             }
 
-            /**
-             * Use "+" to preserve keys, only a problem with numeric repos.
-             */
+            // Use "+" to preserve keys, only a problem with numeric repos.
             $allRepositories = $allRepositories + $repositories;
         }
 
@@ -55,7 +53,7 @@ class Client extends BaseClient
         uksort($allRepositories, function ($k1, $k2) {
             return strtolower($k2) < strtolower($k1);
         });
-
+*/
         return $allRepositories;
     }
 
