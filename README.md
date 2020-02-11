@@ -15,9 +15,16 @@ GitList is an elegant and modern web interface for interacting with multiple git
 * Repository statistics
 
 ## Screenshots
-![Screenshot 1](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/1.jpg)
-![Screenshot 1](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/2.jpg)
-![Screenshot 1](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/3.jpg)
+![Screenshot 1](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/1.png)
+![Screenshot 2](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/2.png)
+![Screenshot 3](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/3.png)
+![Screenshot 4](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/4.png)
+![Screenshot 5](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/5.png)
+![Screenshot 6](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/6.png)
+![Screenshot 7](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/7.png)
+![Screenshot 8](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/8.png)
+![Screenshot 9](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/9.png)
+![Screenshot 10](https://raw.githubusercontent.com/klaussilveira/gitlist/gh-pages/img/roller/10.png)
 
 ## Requirements
 In order to run GitList on your server, you'll need:
@@ -31,14 +38,20 @@ In order to run GitList on your server, you'll need:
 * Do not download a branch or tag from GitHub, unless you want to use the development version. The version available for download at the website already has all dependencies bundled, so you don't have to use composer or any other tool
 * Rename the `config.ini-example` file to `config.ini`.
 * Open up the `config.ini` and configure your installation. You'll have to provide where your repositories are located.
-* In case GitList isn't accessed through the root of the website, open .htaccess and edit RewriteBase (for example, /gitlist/ if GitList is accessed through http://localhost/gitlist/).
+* In case GitList isn't accessed through the root of the website, open `.htaccess` and edit RewriteBase (for example, `/gitlist/` if GitList is accessed through http://localhost/gitlist/).
+* Set file permissions for `.htaccess`
+
+  ```
+  chmod 644 .htaccess
+  ```
+
 * Create the cache folder and give read/write permissions to your web server user:
 
-```
-cd /var/www/gitlist
-mkdir cache
-chmod 777 cache
-```
+  ```
+  cd /var/www/gitlist
+  mkdir cache
+  chmod 777 cache
+  ```
 
 That's it, installation complete! If you're having problems, check the [Troubleshooting](https://github.com/klaussilveira/gitlist/wiki/Troubleshooting) page.
 

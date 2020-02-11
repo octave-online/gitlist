@@ -13,7 +13,7 @@ class Repository extends BaseRepository
     /**
      * Return true if the repo contains this commit.
      *
-     * @param $commitHash Hash of commit whose existence we want to check
+     * @param string $commitHash Hash of commit whose existence we want to check
      *
      * @return bool Whether or not the commit exists in this repo
      */
@@ -54,7 +54,7 @@ class Repository extends BaseRepository
             . '<commiter_date>%ct</commiter_date>'
             . '<message><![CDATA[%s]]></message>'
             . '<body><![CDATA[%b]]></body>'
-            . "</item>\" $file"
+            . "</item>\" -- $file"
         );
 
         $patch_collection = array();
@@ -251,7 +251,7 @@ class Repository extends BaseRepository
      * Show the repository commit log with pagination.
      *
      * @param string $file
-     * @param int page
+     * @param int $page
      *
      * @return array Commit log
      */
@@ -339,7 +339,7 @@ class Repository extends BaseRepository
                 continue;
             }
 
-            preg_match_all('/([\w-._]+):([^:]+):([0-9]+):(.+)/', $result, $matches, PREG_SET_ORDER);
+            preg_match_all('/([\w\-._]+):([^:]+):([0-9]+):(.+)/', $result, $matches, PREG_SET_ORDER);
 
             $data['branch'] = $matches[0][1];
             $data['file'] = $matches[0][2];
@@ -372,7 +372,7 @@ class Repository extends BaseRepository
         return $data;
     }
 
-    public function getStatistics($branch)
+    public function getBranchStatistics($branch)
     {
         // Calculate amount of files, extensions and file size
         $logs = $this->getClient()->run($this, 'ls-tree -r -l ' . $branch);
