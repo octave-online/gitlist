@@ -27,13 +27,19 @@ $(function () {
         md_content.html(converter.makeHtml(md_content.text()));
     }
 
-    var clonePopup = $('#clone-popup')
+    var clonePopup = $('#clone-popup');
+    var cloneButtonShowExtra = $('#clone-button-show-extra');
     var cloneButtonShow = $('#clone-button-show');
     var cloneButtonHide = $('#clone-button-hide');
     var cloneButtonSSH = $('#clone-button-ssh');
     var cloneButtonHTTP = $('#clone-button-http');
     var cloneInputSSH = $('#clone-input-ssh');
     var cloneInputHTTP = $('#clone-input-http');
+
+    cloneButtonShowExtra.click(function()
+    {
+        clonePopup.fadeIn();
+    });
 
     cloneButtonShow.click(function()
     {
