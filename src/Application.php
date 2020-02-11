@@ -75,7 +75,19 @@ class Application extends SilexApplication
             $twig->addGlobal('theme', $app['theme']);
             $twig->addGlobal('title', $config->get('app', 'title') ? $config->get('app', 'title') : 'GitList');
             $twig->addGlobal('show_http_remote', $config->get('clone_button', 'show_http_remote'));
-            $twig->addGlobal('use_https', $config->get('clone_button', 'use_https'));
+            if ($config->get('clone_button', 'use_https') == "auto") {
+                // https://stackoverflow.com/a/16076965/1407170
+                $isSecure = false;
+                if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+                    $isSecure = true;
+                }
+                elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
+                    $isSecure = true;
+                }
+                $twig->addGlobal('use_https', $isSecure);
+            } else {
+                $twig->addGlobal('use_https', $config->get('clone_button', 'use_https'));
+            }
             $twig->addGlobal('http_url_subdir', $config->get('clone_button', 'http_url_subdir'));
             $twig->addGlobal('http_user', $config->get('clone_button', 'http_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'http_user'));
             $twig->addGlobal('http_host', $config->get('clone_button', 'http_host'));
